@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+html, body {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth; /* Smooth scroll for anchor links */
+}
+
+body {
+  background: linear-gradient(135deg, #181818 60%, #FF6B35 115%);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  color: #fff;
+  overflow-x: hidden; /* Prevent sideways scroll */
+}
+
+.login-signup-container {
+  width: 100%;
+  max-width: 450px;
+  margin: 68px auto 40px auto; /* Top and bottom margin for vertical spacing */
+  padding: 30px 0 54px 0; /* Extra padding for visual comfort */
+  display: block;
+  position: relative;
+  min-height: 0; /* Remove min-height that caused scroll lock */
+}
+
+.toggle-btns {
+  display: flex;
+  gap: 0;
+  margin-bottom: 12px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(255,107,53,0.07);
+  justify-content: center;
+}
+
+.toggle-btns button {
+  padding: 10px 38px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  background: #222;
+  color: #bbb;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.19s, color 0.19s;
+}
+
+.toggle-btns button.active {
+  background: linear-gradient(90deg, #FF6B35 70%, #f7931e 100%);
+  color: #fff;
+}
+
+#formWrapper {
+  position: relative;
+  width: 345px;
+  min-height: 370px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.form {
+  background: #222;
+  border-radius: 22px;
+  box-shadow: 0 8px 40px rgba(255,107,53,0.12);
+  padding: 32px 28px 18px 28px;
+  width: 340px;
+  margin: 0 auto; /* Center on page, allow vertical scroll */
+  position: relative;
+  text-align: center;
+  display: none;
+}
+
+.form.active {
+  display: block;
+  animation: fadeIn 0.7s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(16px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.form h2 {
+  color: #FF6B35;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.input-group {
+  margin-bottom: 19px;
+  text-align: left;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: #f7931e;
+  font-size: 0.97rem;
+  display: block;
+  margin-bottom: 7px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  background: #181818;
+  border: 1.5px solid #444;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.18s;
+}
+
+.input-group input:focus {
+  border-color: #FF6B35;
+}
+
+.btn-login {
+  width: 100%;
+  background: linear-gradient(90deg, #FF6B35 63%, #f7931e 100%);
+  color: white;
+  font-size: 1.08rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 13px;
+  padding: 11px 0;
+  cursor: pointer;
+  margin-top: 7px;
+  transition: filter 0.19s;
+}
+
+.btn-login:hover {
+  filter: brightness(1.09);
+}
+
+.form-footer {
+  margin-top: 20px;
+  font-size: .99rem;
+  color: #faaf2a;
+}
+.form-footer a {
+  color: #FF6B35;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 5px;
+}
+
+.form-footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Success Message */
+.success-msg {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #222;
+  border-radius: 22px;
+  box-shadow: 0 8px 40px rgba(255,107,53,0.08);
+  padding: 44px 36px;
+  position: relative;
+  width: 340px;
+  min-height: 250px;
+  margin: 0 auto;
+  animation: fadeIn 0.7s;
+  z-index: 5;
+}
+
+.success-msg.active {
+  display: flex;
+}
+
+.success-msg i {
+  color: #FF6B35;
+  font-size: 2.3rem;
+  margin-bottom: 12px;
+}
+
+/* Floating Food Icons */
+.floating-food {
+  position: fixed;
+  font-size: 2.4rem;
+  z-index: 1;
+  opacity: 0.94;
+  animation: floatY 3.6s infinite alternate;
+  filter: drop-shadow(0 4px 15px #ff6b35b7);
+}
+.floating-food i {
+  color: #FF6B35;
+  background: #222;
+  border-radius: 50%;
+  padding: 12px;
+}
+.pizza    { left: 7vw; top: 11vh; animation-delay: 0.3s;}
+.burger   { right: 6vw; top: 27vh; animation-delay: 1.2s;}
+.icecream { left: 78vw; top: 16vh; animation-delay: 2s;}
+
+@keyframes floatY {
+  0%   { transform: translateY(0) rotate(-4deg);}
+  50%  { transform: translateY(-30px) rotate(11deg);}
+  100% { transform: translateY(0) rotate(-4deg);}
+}
+
+@media screen and (max-width: 650px) {
+  .login-signup-container { padding: 5vw 0 0 0;}
+  #formWrapper, .success-msg { width: 96vw; min-width: 260px;}
+  .form { width: 96vw; }
+  .success-msg { width: 96vw;}
+  .floating-food { font-size: 1.2rem; }
+  .pizza    { left: 2vw; top: 8vh;}
+  .burger   { right: 3vw; top: 11vh;}
+  .icecream { left: 65vw; top: 8vh; }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FoodExpress – Login / Sign Up</title>
+  <link rel="stylesheet" href="login.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <!-- Floating Food Icons -->
+  <div class="floating-food pizza"><i class="fas fa-pizza-slice"></i></div>
+  <div class="floating-food burger"><i class="fas fa-burger"></i></div>
+  <div class="floating-food icecream"><i class="fas fa-ice-cream"></i></div>
+
+  <div class="login-signup-container">
+    <!-- Toggle Buttons -->
+    <div class="toggle-btns">
+      <button id="loginBtn" class="active">Login</button>
+      <button id="signupBtn">Sign Up</button>
+    </div>
+
+    <!-- Form Wrapper -->
+    <div id="formWrapper">
+      <!-- Login Form -->
+      <form id="loginForm" class="form active">
+        <h2>Login to FoodExpress</h2>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" required placeholder="Enter your email"/>
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" required placeholder="Enter your password"/>
+        </div>
+        <button class="btn-login" type="submit">Login</button>
+        <div class="form-footer">
+          <a href="#">Forgot password?</a>
+        </div>
+      </form>
+
+      <!-- Signup Form -->
+
+      <form id="signupForm" class="form">
+        <h2>Create your account</h2>
+        <div class="input-group">
+          <label>Name</label>
+          <input type="text" required placeholder="Enter your name"/>
+        </div>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" required placeholder="Enter your email"/>
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" required placeholder="Create a password"/>
+        </div>
+        <div class="input-group">
+          <label>Confirm Password</label>
+          <input type="password" required placeholder="Confirm password"/>
+        </div>
+        <button class="btn-login" type="submit">Sign Up</button>
+        <div class="form-footer">
+          <span>Already have an account?</span>
+          <a href="#" id="goToLogin">Login</a>
+        </div>
+      </form>
+      <script type="module" 
+      // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+     const email = document.getElementById('email');
+     const password = document.getElementById('password');
+     const btn = document.querySelector('.btn-login');
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyC6i5v3AsiJSs-3d-DXsCzbpmfC8qaWC-U",
+  authDomain: "login-990f8.firebaseapp.com",
+  projectId: "login-990f8",
+  storageBucket: "login-990f8.firebasestorage.app",
+  messagingSenderId: "1079087667897",
+  appId: "1:1079087667897:web:c23300aa794643f641d968"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+btn.addEventListener('click', e => {
+  event.preventDefault();
+  const auth = getAuth();
+  createUserWithEmailAndPassword(auth, email.value, password.value)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log(user);
+      alert('Account created successfully');
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      alert(errorMessage);
+      // ..
+    });
+</script>     </script>
+    </div>
+    <!-- Success Message -->
+    <div id="successMsg" class="success-msg">
+      <i class="fas fa-check-circle"></i>
+      <h2>Login Successful!</h2>
+      <p>Welcome to FoodExpress.</p>
+      <a href="vt.html" class="btn-login">Continue</a>
+    </div>
+  </div>
+  <script src="login.js"></script>
+</body>
+</html>
